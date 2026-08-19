@@ -33,7 +33,7 @@
 ## Прогрес генерації курсу (для мене/AI — не для студента)
 
 - [x] Інфраструктура: `_lib/check.php`, `_env/`, `README.md`, `GLOSSARY.md`, `.gitignore`
-- [ ] Block A — Фундамент мови (01–10) + `11-checkpoint-1-cli-sales-report`
+- [x] Block A — Фундамент мови (01–10) + `11-checkpoint-1-cli-sales-report`
 - [ ] Block B — ООП (12–21)
 - [ ] Block C — Стандартна бібліотека (22–26) + `27-checkpoint-2-task-manager-cli`
 - [ ] Block D — Веб-фундамент (28–33) + `34-checkpoint-3-guestbook-web-app`
