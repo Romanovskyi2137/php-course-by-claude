@@ -1,0 +1,13 @@
+vendor/
+composer.lock
+_env/config.local.php
+tmp/
+*/tmp/
+uploads/
+*/uploads/
+*.sqlite
+*.sqlite3
+.env
+.php-cs-fixer.cache
+.phpunit.cache/
+.DS_Store
