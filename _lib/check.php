@@ -300,6 +300,24 @@ function requireComposerAutoload(string $vendorAutoloadPath): bool
     return true;
 }
 
+// Для тем з 44-testing-with-phpunit: check.php стає тонким запускачем реального
+// PHPUnit замість власних test()/assert*() — саме так, як описано в README.
+// Ніколи не повертається: або skip() + exit(summary()), або exit(код виходу PHPUnit).
+function runPhpUnitOrSkip(string $projectDir): never
+{
+    $phpunitBin = $projectDir . '/vendor/bin/phpunit';
+    if (!file_exists($phpunitBin)) {
+        skip('vendor/bin/phpunit не знайдено: виконай composer install у '
+            . basename($projectDir) . '/ — дивись task.md');
+
+        exit(summary());
+    }
+
+    passthru(escapeshellarg($phpunitBin) . ' --colors=always --configuration ' . escapeshellarg($projectDir), $exitCode);
+
+    exit($exitCode);
+}
+
 function summary(): int
 {
     $state = &state();

@@ -19,7 +19,9 @@
   для тем 01–43; починаючи з теми 44 (PHPUnit) — реальний PHPUnit, `check.php`
   стає тонким запускачем `vendor/bin/phpunit`. Команда завжди одна: `php check.php`.
 - **Toolchain**: нативний PHP 8.3 (apt: `php8.3-cli php8.3-mbstring php8.3-xml
-  php8.3-mysql php8.3-intl php8.3-curl php8.3-sqlite3`) + Composer. Репозиторій
+  php8.3-mysql php8.3-intl php8.3-curl php8.3-sqlite3 php8.3-zip`) + Composer.
+  `php8.3-zip` обов'язковий — без нього Composer не може розпаковувати пакети
+  (немає `unzip`/`7z` за замовчуванням в мінімальних Ubuntu-образах). Репозиторій
   `phpcourse/` — власний git-репозиторій (не залежить від `~/projects`).
 - **БД для перевірок**: реальний MySQL 8 через `docker-compose` (`_env/`).
   Якщо БД не піднята — `check.php` для цих тем виводить `skip()` з інструкцією
@@ -38,7 +40,7 @@
 - [x] Block C — Стандартна бібліотека (22–26) + `27-checkpoint-2-task-manager-cli`
 - [x] Block D — Веб-фундамент (28–33) + `34-checkpoint-3-guestbook-web-app`
 - [x] Block E — Дані та інструменти (35–39) + `40-checkpoint-4-crud-web-app`
-- [ ] Block F — Професійні практики (41–48) + `49-checkpoint-5-rest-api`
+- [x] Block F — Професійні практики (41–48) + `49-checkpoint-5-rest-api`
 
 ## Повний список тем
 
