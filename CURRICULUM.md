@@ -37,7 +37,7 @@
 - [x] Block B — ООП (12–21)
 - [x] Block C — Стандартна бібліотека (22–26) + `27-checkpoint-2-task-manager-cli`
 - [x] Block D — Веб-фундамент (28–33) + `34-checkpoint-3-guestbook-web-app`
-- [ ] Block E — Дані та інструменти (35–39) + `40-checkpoint-4-crud-web-app`
+- [x] Block E — Дані та інструменти (35–39) + `40-checkpoint-4-crud-web-app`
 - [ ] Block F — Професійні практики (41–48) + `49-checkpoint-5-rest-api`
 
 ## Повний список тем

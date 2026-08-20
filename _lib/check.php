@@ -256,6 +256,50 @@ function varExport(mixed $value): string
     return var_export($value, true);
 }
 
+// Для тем блоку E/F (реальний MySQL через _env/docker-compose.yml). Повертає null
+// і виводить skip() замість падіння з незрозумілою помилкою з'єднання, якщо конфіг
+// не скопійований чи контейнер не піднятий — виклич і одразу exit(summary()), якщо null.
+function connectTestDatabase(): ?\PDO
+{
+    $configPath = __DIR__ . '/../_env/config.local.php';
+    if (!file_exists($configPath)) {
+        skip('БД не налаштована: скопіюй _env/config.example.php у _env/config.local.php (див. _env/README.md)');
+
+        return null;
+    }
+
+    $db = (require $configPath)['db'];
+    $dsn = "mysql:host={$db['host']};port={$db['port']};dbname={$db['database']};charset={$db['charset']}";
+
+    try {
+        return new \PDO($dsn, $db['username'], $db['password'], [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+        ]);
+    } catch (\PDOException $e) {
+        skip("MySQL недоступний ({$e->getMessage()}): підніми контейнер — "
+            . 'docker compose -f _env/docker-compose.yml up -d');
+
+        return null;
+    }
+}
+
+// Для тем блоку E, що потребують Composer (з 38-composer-and-psr4). skip() замість
+// падіння, якщо студент ще не виконав composer install/dump-autoload у папці теми.
+function requireComposerAutoload(string $vendorAutoloadPath): bool
+{
+    if (!file_exists($vendorAutoloadPath)) {
+        skip("vendor/autoload.php не знайдено: виконай composer install (або composer dump-autoload) "
+            . 'у відповідній папці — дивись task.md');
+
+        return false;
+    }
+
+    require $vendorAutoloadPath;
+
+    return true;
+}
+
 function summary(): int
 {
     $state = &state();
