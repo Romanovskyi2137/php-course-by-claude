@@ -1,0 +1,7 @@
+[
+    {"id": 1, "title": "Написати README", "status": "done", "dueDate": "2026-07-01", "priority": 2},
+    {"id": 2, "title": "Налаштувати CI", "status": "in_progress", "dueDate": "2026-08-10", "priority": 1},
+    {"id": 3, "title": "Ревʼю пул-реквесту", "status": "todo", "dueDate": "2026-08-15", "priority": 1},
+    {"id": 4, "title": "Оновити залежності", "status": "todo", "dueDate": "2026-09-01", "priority": 3},
+    {"id": 5, "title": "Написати тести для API", "status": "in_progress", "dueDate": "2026-09-15", "priority": 2}
+]
